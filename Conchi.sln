@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conchi", "Conchi\Conchi.csproj", "{FE0713E6-263A-4FF1-9849-690994D2DB21}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE0713E6-263A-4FF1-9849-690994D2DB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE0713E6-263A-4FF1-9849-690994D2DB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE0713E6-263A-4FF1-9849-690994D2DB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE0713E6-263A-4FF1-9849-690994D2DB21}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E029606C-A85B-431F-8F39-658ADB06C4D6}
+	EndGlobalSection
+EndGlobal
