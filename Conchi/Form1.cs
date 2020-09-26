@@ -56,8 +56,6 @@ namespace Conchi
         private void iniciarConchi()
         {
             ProcessStartInfo ejecutarConchi = new ProcessStartInfo(); //creamos un nuevo proceso a parte para la ejecucion de conchi en python
-            //ejecutarConchi.UseShellExecute = false;
-            //ejecutarConchi.CreateNoWindow = true;
             ejecutarConchi.WindowStyle = ProcessWindowStyle.Hidden; //hacemos que la aparencia de la ventana sea escondida para que
             ejecutarConchi.FileName = "start.bat";                  //no se vea la venta de la consola de comandos
             Process.Start(ejecutarConchi);

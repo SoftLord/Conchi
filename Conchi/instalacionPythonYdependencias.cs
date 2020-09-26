@@ -20,6 +20,11 @@ namespace Conchi
             InitializeComponent();
         }
 
+        private void instalacionPythonYdependencias_Load(object sender, EventArgs e)
+        {
+            ComprobarArchivos();
+        }
+
         private void ComprobarArchivos()
         {
             //comprobamos si tiene python 3 instalado
@@ -36,10 +41,50 @@ namespace Conchi
                 //es python 3
                 else
                 {
-                    //console.Read() / console.ReadLine()
-                    ProcessStartInfo ejecutarPip = new ProcessStartInfo(); //creamos un nuevo proceso a parte para la ejecucion de conchi en python
-                    ejecutarPip.FileName = "pip.bat";
+                    ProcessStartInfo ejecutarPip = new ProcessStartInfo(); //creamos un nuevo proceso a parte para ejecutar el programa pip.py
+                    ejecutarPip.WindowStyle = ProcessWindowStyle.Hidden; //hacemos que la aparencia de la ventana sea escondida para que
+                    ejecutarPip.FileName = "pip.bat";                  //no se vea la venta de la consola de comandos
                     Process.Start(ejecutarPip);
+                    Thread.Sleep(1000);                                //le damos un margen de 1s para que cree el archivo
+
+                    List<string> lista_librerias_necesarias = new List<string>()
+                    {
+                        "gTTS",
+                        "wget",
+                        "playsound",
+                        "SpeechRecognition",
+                        "PyAudio"
+                    }; //creamos una lista donde guardaremos los que necesitamos saber
+
+                    StreamReader librerias_python = new StreamReader("librerias_python.txt");
+                    string linea;
+                    Boolean hecho = false;
+                    while (!hecho)
+                    {
+                        linea = librerias_python.ReadLine();
+
+                        if (linea == null) //fin del archivoº
+                        {
+                            hecho = true;
+                        }
+                        else if (lista_librerias_necesarias.Contains(linea))
+                        {
+                            //eliminamos de la lisa las que tenemos instaladas
+                            lista_librerias_necesarias.Remove(linea);
+                        }
+                    }
+
+                    //miramos los elementos que quedaron
+                    if (lista_librerias_necesarias.Any()) //any dice si contien datos o no, si hay algo devuelve true
+                    {
+                        etiquetaLibrerias.Text = "";
+                    }
+                    else
+                    {
+                        //Application.Exit();//si esta todo instalado lo cerramos
+                        etiquetaLibrerias.Text = "Tiene usted todas las librerias instaladas.\n Puede cerrar y volver a abrir la aplicación.";
+                    }
+
                 }
             }
             else
@@ -50,5 +95,6 @@ namespace Conchi
                 Application.Exit();
             }
         }
+
     }
 }

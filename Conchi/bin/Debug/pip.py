@@ -2,9 +2,11 @@ import subprocess
 
 #obtenemos el resultado en consola de -pip list y lo guardamos en un fichero de texto dandole el formato que queramos
 output = str(subprocess.check_output("pip list"))
-output = output.replace("b'Package           Version", "")
+output = output.replace("Package", "")
+output = output.replace("Version", "")
+output = output.replace("b", "")
 output = output.replace("'", "")
-output = output.replace("----------------- ---------", "")
+output = output.replace("-", "")
 output = output.replace("\\r\\n\\r\\n", "")
 output = output.replace("\\r\\n", " ")
 #estas sustituciones extrañas tienen sentido ya que las suele incluir en el output
