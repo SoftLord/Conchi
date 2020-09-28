@@ -77,7 +77,10 @@ namespace Conchi
                     //miramos los elementos que quedaron
                     if (lista_librerias_necesarias.Any()) //any dice si contien datos o no, si hay algo devuelve true
                     {
-                        etiquetaLibrerias.Text = "";
+                        string librerias_etiqueta = string.Join(", ", lista_librerias_necesarias); //pasamos la lista a string
+                        etiquetaLibrerias.Text = "Necesita instalar las siguientes librerias:\n" +
+                            librerias_etiqueta + "\nPara ello instale las librerias manualmente usando el comando " +
+                            "pip install \"nombre_de_la_libreria\" (sin comillas)";
                     }
                     else
                     {

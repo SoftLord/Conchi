@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
+using System.IO;
 using System.Linq;
 using System.Media;
 using System.Runtime.Remoting.Messaging;
@@ -29,7 +30,23 @@ namespace Conchi
 
         private void Conchi_Load(object sender, EventArgs e)
         {
-            iniciarYpausarVideo(rutaAnimacion, true); //iniciamos el video al iniciar la aplicacion
+            StreamReader instalacionCompletada = new StreamReader("options.txt");
+
+            string linea = instalacionCompletada.ReadLine();
+            instalacionCompletada.Close();
+
+            if (linea.Contains("true"))
+            {
+                iniciarYpausarVideo(rutaAnimacion, true); //iniciamos el video al iniciar la aplicacion
+            }
+            else if (linea.Contains("false"))
+            {
+
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private Boolean hecho = false;
