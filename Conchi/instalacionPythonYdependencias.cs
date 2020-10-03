@@ -81,11 +81,20 @@ namespace Conchi
                         etiquetaLibrerias.Text = "Necesita instalar las siguientes librerias:\n" +
                             librerias_etiqueta + "\nPara ello instale las librerias manualmente usando el comando " +
                             "pip install \"nombre_de_la_libreria\" (sin comillas)";
+
+                        StreamWriter archivoOpciones = new StreamWriter("opciones.txt");
+                        archivoOpciones.Write("instalacion = false");
+                        archivoOpciones.Close();
                     }
                     else
                     {
                         //Application.Exit();//si esta todo instalado lo cerramos
                         etiquetaLibrerias.Text = "Tiene usted todas las librerias instaladas.\n Puede cerrar y volver a abrir la aplicación.";
+
+                        //abrimos el fichero para escribir en el
+                        StreamWriter archivoOpciones = new StreamWriter("opciones.txt");
+                        archivoOpciones.Write("instalacion = true");
+                        archivoOpciones.Close();
                     }
 
                 }

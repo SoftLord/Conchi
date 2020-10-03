@@ -30,21 +30,32 @@ namespace Conchi
 
         private void Conchi_Load(object sender, EventArgs e)
         {
-            StreamReader instalacionCompletada = new StreamReader("options.txt");
-
-            string linea = instalacionCompletada.ReadLine();
-            instalacionCompletada.Close();
-
-            if (linea.Contains("true"))
+            try
             {
-                iniciarYpausarVideo(rutaAnimacion, true); //iniciamos el video al iniciar la aplicacion
+                StreamReader instalacionCompletada = new StreamReader("opciones.txt");
+
+                string linea = instalacionCompletada.ReadLine();
+                instalacionCompletada.Close();
+
+                if (linea.Contains("true"))
+                {
+                    iniciarYpausarVideo(rutaAnimacion, true); //iniciamos el video al iniciar la aplicacion
+                }
+                else if (linea.Contains("false"))
+                {
+                    //creamos un form que sera el de instalacion python y dependencias
+                    instalacionPythonYdependencias Form = new instalacionPythonYdependencias();
+                    Form.Show();
+                }
+                else
+                {
+                    Application.Exit();
+                }
             }
-            else if (linea.Contains("false"))
+            catch
             {
-
-            }
-            else
-            {
+                MessageBox.Show("Ha borrado usted archivos necesarios para su ejecución.\n Reinstale el programa", 
+                    "Error de archivos", MessageBoxButtons.OK);
                 Application.Exit();
             }
         }
