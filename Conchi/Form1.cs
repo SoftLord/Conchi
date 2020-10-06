@@ -28,6 +28,8 @@ namespace Conchi
         String rutaAnimacion = @"logos\animacion.mp4";
         String rutaSonido = @"logos\sonido.wav";
 
+        Boolean instalado = false; //este bool nos servira para activar o no el boton de hablar
+
         private void Conchi_Load(object sender, EventArgs e)
         {
             try
@@ -39,6 +41,7 @@ namespace Conchi
 
                 if (linea.Contains("true"))
                 {
+                    instalado = true; //todo la instalacion de dependencias correctas
                     iniciarYpausarVideo(rutaAnimacion, true); //iniciamos el video al iniciar la aplicacion
                 }
                 else if (linea.Contains("false"))
@@ -64,21 +67,25 @@ namespace Conchi
 
         private void btnReproducir_Click(object sender, EventArgs e) //este es el metodo que se ejecutará cuando hagamos click sobre el boton de hablar
         {
-            if (!hecho)
+            if (instalado)
             {
-                iniciarYpausarVideo(rutaAnimacion); //lo despausamos y al cabo de 2300 ms lo reanudamos
+                if (!hecho)
+                {
+                    iniciarYpausarVideo(rutaAnimacion); //lo despausamos y al cabo de 2300 ms lo reanudamos
 
-                hecho = true;
+                    hecho = true;
 
-                iniciarConchi();
+                    iniciarConchi();
+                }
+
+                else
+                {
+                    repSonido(rutaSonido); //solo reproducimos el sonido
+
+                    iniciarConchi(); //iniciamos la parte logica de conchi, que está escrita en python
+                }
             }
-
-            else
-            {
-                repSonido(rutaSonido); //solo reproducimos el sonido
-
-                iniciarConchi(); //iniciamos la parte logica de conchi, que está escrita en python
-            }
+            //si no esta instalado no hara nada
         }
 
         private void iniciarConchi()
