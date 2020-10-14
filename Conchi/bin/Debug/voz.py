@@ -15,7 +15,7 @@ def guardar(texto):
 
 #poner aqui la funcion para descargar el tiempo
 
-#----------------------------LISTAS------------------------------------------------------------------------------------------------------------------------#
+#------------------------------------------LISTAS---------------------------------------------------------------------------#
 
 LISTA_SALUDOS = ["hola", "va", "tal", "estás", "ey", "noches", "dias", "días","pasa", "compadre", "saludos"]
 LISTA_PREGUNTAS_PERSONALES = ["llamas", "como", "eres"]
@@ -23,10 +23,14 @@ LISTA_OTROS_ASISTENTES = ["Assistant", "Alexa", "Google home", "Siri", "oye", "O
 #LISTA_TIEMPO = ["tiempo", "clima", "temperatura"]
 LISTA_BUSQUEDA = ["busca", "Google", "es"]
 LISTA_BASES = ["base", "beatbox", "improvisar", "improvisa", "pínchame", "pinchame", "ponme"]
-LISTA_CREADOR = ["creador", "padre", "amo", "diseñó", "diseñado", "diseño", "creado", "creó"]
+LISTA_CREADOR = ["creador", "padre", "amo", "diseñó", "diseñado", "diseño", "creado", "creó", "creo"]
+LISTA_PREGUNTAS_QUIEN_SOY = ["soy", "llamo"]
+LISTA_AMOR = ["salir", "cita", "quieres", "quiero", "amo"]
 
-#------------------------FIN FUNCIONES-------------------------------------------------# 
+#---------------------------------------FIN LISTAS-------------------------------------------------# 
 
+
+#---------------------------------------FUNCIONES--------------------------------------------------#
 def interpretar(textoDicho): #hecho a base de if, elif y else, siempre devuelve una respuesta que después dirá
     
     textoDicho = textoDicho.split() #lo pasamos a tipo lista
@@ -71,3 +75,12 @@ def interpretar(textoDicho): #hecho a base de if, elif y else, siempre devuelve 
             print(eleccion)
             nombre_cancion = "musica/basefree" + str(eleccion) + ".mp3"
             playsound.playsound(nombre_cancion)
+
+        elif palabra in LISTA_PREGUNTAS_QUIEN_SOY:
+            return "¿Quién?, ¿Tú...? Pues un gilipollas de primera"
+
+        elif palabra in LISTA_AMOR:
+            if palabra == "cita" or palabra == "salir":
+                return "Pues claro, si me invitas todos contentos. Tu lleva un ordenador a una cita a ver que dice el camarero..."
+            else:
+                return "si si, muy bonito. Pero... ¿Cuando me llevarás de compras?"
