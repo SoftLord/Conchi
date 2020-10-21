@@ -28,10 +28,10 @@ namespace Conchi
         private void ComprobarArchivos()
         {
             //comprobamos si tiene python 3 instalado
-            if (Directory.Exists(@"C:\Users\alvar\AppData\Roaming\Python"))
+            if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\AppData\Roaming\Python"))
             {
                 //comprobamos que no sea Python 2
-                if (Directory.Exists(@"C:\Users\alvar\AppData\Roaming\Python\Python27"))
+                if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\AppData\Roaming\Python\Python27"))
                 {
                     MessageBox.Show("Este programa requiere la instalación de Python 3, ya que tiene usted Python 2 instalado, y varias dependecias.\n" +
                         "Para descargar Python 3 vaya a su página " +
