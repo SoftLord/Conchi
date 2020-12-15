@@ -28,7 +28,7 @@ namespace Conchi
         private void ComprobarArchivos()
         {
             //comprobamos si tiene python 3 instalado
-            if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\AppData\Roaming\Python"))
+            if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\AppData\Local\Programs\Python"))
             {
                 //comprobamos que no sea Python 2
                 if (Directory.Exists(@"C:\Users\" + Environment.UserName + @"\AppData\Roaming\Python\Python27"))
@@ -45,7 +45,7 @@ namespace Conchi
                     ejecutarPip.WindowStyle = ProcessWindowStyle.Hidden; //hacemos que la aparencia de la ventana sea escondida para que
                     ejecutarPip.FileName = "pip.bat";                  //no se vea la venta de la consola de comandos
                     Process.Start(ejecutarPip);
-                    Thread.Sleep(1000);                                //le damos un margen de 1s para que cree el archivo
+                    Thread.Sleep(2000);                                //le damos un margen de 2s para que cree el archivo
 
                     List<string> lista_librerias_necesarias = new List<string>()
                     {
